@@ -1,0 +1,20 @@
+Simply put:
+esxi_build_numbers.json is a JSON-ified version of https://kb.vmware.com/kb/2143832, a mapping of "this build number is that version".
+
+
+
+I don't care about anything older than 4.x.  Getting versions of actual software before 4 from VMware as of 2017-03 (aside from one final 3.5), is almost impossible.  And if you're using something that old, too bad.
+4.x is deprecated and early 5.x is getting long in the tooth.  I am just trusting what VMware published from there forward.
+
+
+
+'osname' is ESX or ESXi, or both.
+'full_version' is "X.Y full version name"  We then break that down for more parseability in...
+  'major_version' X.Y.  The old days with 4.0.0 never showed a minor in the 3rd digit, so, dropped for string consistency.
+  'true_minor_version' is a wordy description exactly as reported from the VMware KB above.
+'build_number' and 'installer_build_number' are as reported by the KB.  installer_build_number may be "N/A" if it has no difference from the build_number.
+'release_date' is as reported by VMware in the KB.
+'interpolated_update_version' is a manually-interpolated string of either '' or "uX", where X is the most recent good-sized update version this patch goes against.  This is done by looking backwards in build list for the most recent 'Update X' release.
+'interpolated_build_number' - The reality I've found is that the 'installer_build_number' number, if it's there, is the one you find reported by ESXi.  So my JSON creates an interpolated_build_number that is installer_build_number (if it's not N/A) or build_number.  The logic is simple; if it's incorrect, I welcome corrections.
+
+

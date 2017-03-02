@@ -1,0 +1,27 @@
+This repo is an attempt to code-base a solution to a simple version mapping problem with VMware ESX(i).
+
+VMware publishes many (integer) host build numbers that point to different (string) patch levels.
+    This can be found at https://kb.vmware.com/kb/2143832.
+Part of this module is for taking a scrape of that page and turning it into JSON, so you could do something with just that piece: answering "what version is THIS build number?"
+
+
+For each (integer) host build number, a guest OS will see a certain (string) BIOS address and (string) release date.
+    This does not seem to be published.
+The other piece of this module is a simple collection of the output of `dmidecode` for a Linux guest booted on a host that reports being X build.
+
+
+With a large enough data set in both directions, you can have a mapping that can take you from a BIOS Address (and a Release Date) in `dmidecode` back to your build number, and then from the build number forward to the specific build of ESX.  This way, a VM can know what kind of ESX it was booted on.
+
+There are a lot of discrepancies in this mapping across the Internet.  In most places, people take a shortcut and just say "here's the answers", but they disagree sometimes:
+https://fritshoogland.wordpress.com/2013/01/24/determine-vmware-esx-version-from-linux-as-guest-os/  has ESX4 that disagrees with: http://virtwo.blogspot.co.uk/2015/05/which-vsphere-version-is-my-vm-running.html
+http://www.virten.net/vmware/esx-release-and-build-number-history/ lists items that don't appear in the true VMware list, so I'm not sure how to verify them
+There's also https://esxi-patches.v-front.de/, which lists VIB packages matching patch levels.  Very good info, but not what I'm going for here.
+H/T to https://github.com/wolfspyre/vmware_puppetfact for a similar publication.
+
+
+So rather than try to reconcile different ones of varying ages and quality, I'm aiming to re-report against the best sources of truth I found.
+Why should you trust my numbers, after I gave a full paragraph where I don't trust other peoples' work?  You shouldn't.  And short of firing up your own instances to verify my work, you can't.  But I'm showing my work, so verify away, and let me know if there's errors.
+
+If there's truly errors in the (buildnumber->buildstring) mapping, either VMware did the KB wrong, I copied it wrong, or I might have a small glitch in a translation script.
+If there's errors in the (buildnumber->BIOS address) mapping, any independent verification should prove out the issue.  It's not impossible that I might have gotten something wrong here.  But it's less likely.
+Combining those, hopefully there's enough here to have a trust-but-verify dataset.
