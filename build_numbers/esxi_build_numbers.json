@@ -1,6 +1,17 @@
 [
    {
       "osname" : "ESXi",
+      "full_version" : "6.5. Patch 01",
+      "major_version" : "6.5",
+      "true_minor_version" : "Patch 01",
+      "release_date" : "2017-03-09",
+      "build_number" : "5146846",
+      "installer_build_number" : "5146843",
+      "interpolated_update_version" : "",
+      "interpolated_build_number" : "5146843"
+   },
+   {
+      "osname" : "ESXi",
       "full_version" : "6.5.0a",
       "major_version" : "6.5",
       "true_minor_version" : "a",

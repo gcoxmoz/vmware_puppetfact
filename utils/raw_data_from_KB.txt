@@ -1,4 +1,5 @@
 # A screen copy/paste of https://kb.vmware.com/kb/2143832 and some quick joins to put items on one line.
+ESXi 6.5. Patch 01 	2017-03-09 	5146846 	5146843
 ESXi 6.5.0a 	2017-02-02 	4887370 	N/A
 ESXi 6.5 GA 	2016-11-15 	4564106 	N/A
 ESXi 6.0 Update 3 	2017-02-24 	5050593 	N/A
