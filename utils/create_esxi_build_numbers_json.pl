@@ -17,10 +17,10 @@ my @fields         = qw(osname full_version major_version true_minor_version rel
 my @addon_fields   = qw(interpolated_update_version interpolated_build_number );
 
 my %sorting_fields = map { $fields[$_] => $_ } ( 0..$#fields );
-foreach my $i (0..$#addon_fields) { 
+foreach my $i (0..$#addon_fields) {
     $sorting_fields{$addon_fields[$i]} = $#fields + 1 + $i;
 }
-   
+
 
 # For each line, make a hash of k/v pairs based on the structure of the KB.
 # If VMW changes the layout of the KB, this regexp will probably need tweaking.
@@ -31,7 +31,7 @@ while (<>) {
     if (m{^\s*                     # leading spaces if any
            (ESX\S*)\s+             # ESX or ESXi, space
            ((\d\.\d)               # Major version number  (doublegrab here, full version and breakout)
-             (?:\s+|\.\d\s*)       # either spaces, or, .0(optionalspace) to get rid of stupid cases of 
+             (?:\s+|\.\d?\s*)      # either spaces, or, .0(optionalspace) to get rid of stupid cases of
                                    # there being "5.1.0 GA" and "6.0.0b"
            (.*?))\s+               # A grab-it-all for the descriptor of the release.
            (\d{4}-\d{2}-\d{2})?\s+ # Release date (if they put one in), space
