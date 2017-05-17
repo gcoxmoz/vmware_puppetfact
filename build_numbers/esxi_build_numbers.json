@@ -1,6 +1,28 @@
 [
    {
       "osname" : "ESXi",
+      "full_version" : "6.5.0d",
+      "major_version" : "6.5",
+      "true_minor_version" : "d",
+      "release_date" : "2017-04-18",
+      "build_number" : "5310538",
+      "installer_build_number" : "NA",
+      "interpolated_update_version" : "",
+      "interpolated_build_number" : "5310538"
+   },
+   {
+      "osname" : "ESXi",
+      "full_version" : "6.5. Express Patch 1a",
+      "major_version" : "6.5",
+      "true_minor_version" : "Express Patch 1a",
+      "release_date" : "2017-03-28",
+      "build_number" : "5224529",
+      "installer_build_number" : "NA",
+      "interpolated_update_version" : "",
+      "interpolated_build_number" : "5224529"
+   },
+   {
+      "osname" : "ESXi",
       "full_version" : "6.5. Patch 01",
       "major_version" : "6.5",
       "true_minor_version" : "Patch 01",
@@ -31,6 +53,17 @@
       "installer_build_number" : "N/A",
       "interpolated_update_version" : "",
       "interpolated_build_number" : "4564106"
+   },
+   {
+      "osname" : "ESXi",
+      "full_version" : "6.0 Express Patch 7a",
+      "major_version" : "6.0",
+      "true_minor_version" : "Express Patch 7a",
+      "release_date" : "2017-03-28",
+      "build_number" : "5224934",
+      "installer_build_number" : "N/A",
+      "interpolated_update_version" : "u3",
+      "interpolated_build_number" : "5224934"
    },
    {
       "osname" : "ESXi",
@@ -196,6 +229,17 @@
       "installer_build_number" : "N/A",
       "interpolated_update_version" : "",
       "interpolated_build_number" : "2494585"
+   },
+   {
+      "osname" : "ESXi",
+      "full_version" : "5.5 Express Patch 11",
+      "major_version" : "5.5",
+      "true_minor_version" : "Express Patch 11",
+      "release_date" : "2017-03-28",
+      "build_number" : "5230635",
+      "installer_build_number" : "NA",
+      "interpolated_update_version" : "u3",
+      "interpolated_build_number" : "5230635"
    },
    {
       "osname" : "ESXi",

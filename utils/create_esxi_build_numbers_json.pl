@@ -36,7 +36,7 @@ while (<>) {
            (.*?))\s+               # A grab-it-all for the descriptor of the release.
            (\d{4}-\d{2}-\d{2})?\s+ # Release date (if they put one in), space
            (\d+)\s+                # Numeric build number, space
-           (\S+)                   # Installer build number (though usually an "N/A")
+           (\S+)                   # Installer build number (though usually an "NA" or "N/A")
            \s*$}x) {               # trailing spaces if any
         my @vals = ($1, $2, $3, $4, $5, $6, $7, );
         my %hash = map { $fields[$_] => $vals[$_] } ( 0..$#vals );
