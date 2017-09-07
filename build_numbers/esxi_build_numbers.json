@@ -1,6 +1,17 @@
 [
    {
       "osname" : "ESXi",
+      "full_version" : "6.5 U1",
+      "major_version" : "6.5",
+      "true_minor_version" : "U1",
+      "release_date" : "2017-07-27",
+      "build_number" : "5969303",
+      "installer_build_number" : "N/A",
+      "interpolated_update_version" : "u1",
+      "interpolated_build_number" : "5969303"
+   },
+   {
+      "osname" : "ESXi",
       "full_version" : "6.5.0d",
       "major_version" : "6.5",
       "true_minor_version" : "d",
@@ -53,6 +64,17 @@
       "installer_build_number" : "N/A",
       "interpolated_update_version" : "",
       "interpolated_build_number" : "4564106"
+   },
+   {
+      "osname" : "ESXi",
+      "full_version" : "6.0 Patch 5",
+      "major_version" : "6.0",
+      "true_minor_version" : "Patch 5",
+      "release_date" : "2017-06-06",
+      "build_number" : "5572656",
+      "installer_build_number" : "N/A",
+      "interpolated_update_version" : "u3",
+      "interpolated_build_number" : "5572656"
    },
    {
       "osname" : "ESXi",

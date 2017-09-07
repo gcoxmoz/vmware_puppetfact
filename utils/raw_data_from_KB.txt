@@ -1,9 +1,11 @@
 # A screen copy/paste of https://kb.vmware.com/kb/2143832 and some quick joins to put items on one line.
+ESXi 6.5 U1 	2017-07-27 	5969303 	N/A
 ESXi 6.5.0d	2017-04-18	5310538	NA
 ESXi 6.5. Express Patch 1a	2017-03-28	5224529	NA
 ESXi 6.5. Patch 01 	2017-03-09 	5146846 	5146843
 ESXi 6.5.0a 	2017-02-02 	4887370 	N/A
 ESXi 6.5 GA 	2016-11-15 	4564106 	N/A
+ESXi 6.0 Patch 5 	2017-06-06 	5572656 	N/A
 ESXi 6.0 Express Patch 7a	2017-03-28	5224934	N/A
 ESXi 6.0 Update 3 	2017-02-24 	5050593 	N/A
 ESXi 6.0 Patch 4 	2016-11-22 	4600944 	N/A
