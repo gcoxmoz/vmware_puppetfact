@@ -3,5 +3,7 @@ This directory is the utilities for keeping things going.
 
 Ongoing maintenance:
 1) When there's an update to https://kb.vmware.com/kb/2143832, update utils/raw_data_from_KB.txt
-2) When new releases happen, install a host, boot a Linux guest, and save off a run of `dmidecode -t bios` as dmidecode/dmidecode.NUM.txt, where NUM is the build number reported by ESX.
-3) run make to rebuild the JSON and the facter ruby file.
+2) Run `utils/matchup-bios-to-string.pl --dump --minor` and verify that we have covered all 'update X' releases.  (minor patches no, major updates yes)
+3) When new releases happen, install a host, boot a Linux guest, and save off a run of `dmidecode -t bios` as dmidecode/dmidecode.NUM.txt, where NUM is the build number reported by ESX.
+4) run `make` to rebuild the JSON and the facter ruby file.
+5) Commit and publish.
