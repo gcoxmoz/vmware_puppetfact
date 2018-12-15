@@ -36,6 +36,7 @@ find(\&wanted, $dmidecode_dir);
 
 # For each line, make a hash of k/v pairs based on the structure of the KB.
 # If VMW changes the layout of the KB, this regexp will probably need tweaking.
+# In lieu of an example line for this evil regexp, see raw_data_from_KB.txt
 my @lines1 = ();
 while (<>) {
     next if (m#^\s*$#); # skip empties
