@@ -48,6 +48,8 @@ if Facter.value(:kernel) == 'Linux'
                 vmversion = '6.0'
             elsif biosaddress == '0xEA580'
                 vmversion = '6.5'
+            elsif biosaddress == '0xEA520'
+                vmversion = '6.7'
             else
                 vmversion = ['unknown-',biosaddress].join('')
             end

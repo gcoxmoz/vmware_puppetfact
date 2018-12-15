@@ -7,7 +7,7 @@ Part of this module is for taking a scrape of that page and turning it into JSON
 
 For each (integer) host build number, a guest OS will see a certain (string) BIOS address and (string) release date.
     This does not seem to be published.
-The other piece of this module is a simple collection of the output of `dmidecode` for a Linux guest booted on a host that reports being X build.
+The other piece of this module is a simple collection of the output of `dmidecode -t bios` for a Linux guest booted on a host that reports being X build.
 
 
 With a large enough data set in both directions, you can have a mapping that can take you from a BIOS Address (and a Release Date) in `dmidecode` back to your build number, and then from the build number forward to the specific build of ESX.  This way, a VM can know what kind of ESX (or, at least, virtual-hardware) it was booted on.

@@ -5,6 +5,9 @@
 use strict;
 use warnings;
 use JSON;
+use File::Find;
+
+my $dmidecode_dir       = '../dmidecode';
 
 #
 # This script is a pipeline.  cat raw_data_from_KB.txt | this
@@ -21,6 +24,15 @@ foreach my $i (0..$#addon_fields) {
     $sorting_fields{$addon_fields[$i]} = $#fields + 1 + $i;
 }
 
+my %all_bios        = ();
+sub wanted {
+    return unless m#^dmidecode\.(\d+)\.txt$#;
+    my $buildnum = $1;
+    $all_bios{$buildnum} = 1;
+}
+
+# does dmidecode_dir exist
+find(\&wanted, $dmidecode_dir);
 
 # For each line, make a hash of k/v pairs based on the structure of the KB.
 # If VMW changes the layout of the KB, this regexp will probably need tweaking.
@@ -28,6 +40,7 @@ my @lines1 = ();
 while (<>) {
     next if (m#^\s*$#); # skip empties
     next if (m/^\s*#/); # skip comments
+    my $line = $_;
     if (m{^\s*                        # leading spaces if any
            (ESX\S*)\s+                # ESX or ESXi, space
            ((\d\.\d)                  # Major version number  (doublegrab here, full version and breakout)
@@ -44,13 +57,8 @@ while (<>) {
            (\S+)                      # Installer build number (though usually an "NA" or "N/A")
            \s*$}x) {                  # trailing spaces if any
         my @vals = ($1, $2, $3, $4, $5, $6, $7, );
-        # Fix the date into YYYY-MM-DD
-        if ($vals[4] =~ m#(\d{1,2})/(\d{1,2})/(\d{4})#) {
-            $vals[4] = sprintf('%04d-%02d-%02d', $3, $1, $2);
-        } else {
-            $vals[4] = '';
-        }
         my %hash = map { $fields[$_] => $vals[$_] } ( 0..$#vals );
+        $hash{'line'} = $line;
         push @lines1, \%hash;
     } else {
         chomp;
@@ -73,10 +81,8 @@ foreach my $line_ref (reverse @lines1) {
     $line_ref->{'interpolated_update_version'} = $interpolated_update_version;
 
     $line_ref->{'interpolated_build_number'} = ($line_ref->{'installer_build_number'} =~ m#^\d+$#) ? $line_ref->{'installer_build_number'} : $line_ref->{'build_number'};
-    push @lines2, $line_ref;
+    print(($all_bios{$line_ref->{'interpolated_build_number'}}) ? 'DONE ' : '     ');
+    print $line_ref->{'line'};
 }
 
-# Finally, print a JSON of what you learned.
-my @lines3 = reverse @lines2;
-my $json_text = to_json(\@lines3, {utf8 => 1, pretty => 1, sort_by => sub { $sorting_fields{$JSON::PP::a} <=> $sorting_fields{$JSON::PP::b} } });
-print $json_text;
+
