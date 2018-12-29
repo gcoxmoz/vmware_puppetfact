@@ -20,7 +20,7 @@ if Facter.value(:kernel) == 'Linux'
             end
 
             if biosaddress == 'no_data'
-                vmversion = ['unknown-',biosaddress].join('')
+                vmversion = "unknown-#{biosaddress}"
 #           Numbers from a prior life, which have only anecdotal proof.  Uncomment if you wish
 #            elsif biosaddress == '0xE8480'
 #                vmversion = '2.5'
@@ -30,7 +30,7 @@ if Facter.value(:kernel) == 'Linux'
 #                vmversion = '3.5'
             [PLACEHOLDER]
             else
-                vmversion = ['unknown-',biosaddress].join('')
+                vmversion = "unknown-#{biosaddress}"
             end
 
             Facter.add('vmware_version') do
