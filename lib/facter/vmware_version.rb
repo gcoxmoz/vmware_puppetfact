@@ -4,7 +4,7 @@ require 'facter'
 
 if Facter.value(:kernel) == 'Linux'
     Facter.loadfacts()
-    
+
     hasdmidecode = Facter::Util::Resolution.exec('which dmidecode')
     if !hasdmidecode.nil?
         biosinformation = Facter::Util::Resolution.exec("#{hasdmidecode} -t bios | grep -A4 'BIOS Information'")

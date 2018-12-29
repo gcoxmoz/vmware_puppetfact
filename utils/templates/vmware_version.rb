@@ -1,11 +1,13 @@
 require 'facter'
 
-if Facter.value(:kernel) == 'Linux'
-    Facter.loadfacts()
-    
-    hasdmidecode = Facter::Util::Resolution.exec('which dmidecode')
-    if !hasdmidecode.nil?
-        biosinformation = Facter::Util::Resolution.exec("#{hasdmidecode} -t bios | grep -A4 'BIOS Information'")
+# TODO: Verify this is required for the confine to work correctly.
+Facter.loadfacts()
+
+Facter.add('vmware_version') do
+    confine :kernel => 'Linux'
+    confine :virtual => :vmware
+    setcode {
+        biosinformation = Facter::Util::Resolution.exec("dmidecode -t bios | grep -A4 'BIOS Information'")
         if !biosinformation.nil?
 
             if biosinformation.include? 'Address: 0x'
@@ -33,10 +35,8 @@ if Facter.value(:kernel) == 'Linux'
                 vmversion = "unknown-#{biosaddress}"
             end
 
-            Facter.add('vmware_version') do
-                confine :virtual => :vmware
-                setcode { vmversion }
-            end
+            # The effective return:
+            vmversion
         end
-    end
+    }
 end
