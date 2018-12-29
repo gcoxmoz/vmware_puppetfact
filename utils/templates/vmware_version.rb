@@ -10,16 +10,8 @@ Facter.add('vmware_version') do
         biosinformation = Facter::Util::Resolution.exec("dmidecode -t bios | grep -A4 'BIOS Information'")
         if !biosinformation.nil?
 
-            if biosinformation.include? 'Address: 0x'
-                biosaddress = biosinformation.match(/Address: (0x.*)/i)[1]
-            else
-                biosaddress = 'no_data'
-            end
-            if biosinformation.include? 'Release Date:'
-                biosdate = biosinformation.match(/Release Date: (.*)/i)[1]
-            else
-                biosdate = 'no_data'
-            end
+            biosaddress = (biosinformation =~ /Address: (0x.*)/i) ? $1 : 'no_data'
+            biosdate = (biosinformation =~ /Release Date: (.*)/i) ? $1 : 'no_data'
 
             if biosaddress == 'no_data'
                 vmversion = "unknown-#{biosaddress}"
