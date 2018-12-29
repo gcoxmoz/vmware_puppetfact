@@ -152,6 +152,7 @@ if ($templatefile) {
     }
     my @file = <FH>;
     close(FH);
+    print "# This file was generated from $templatefile\n\n";
     foreach my $line (@file) {
         if ($line !~ m#^(\s*)\[PLACEHOLDER\].*$#) {
             print $line;  next;

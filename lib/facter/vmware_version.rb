@@ -1,3 +1,5 @@
+# This file was generated from templates/vmware_version.rb
+
 require 'facter'
 
 if Facter.value(:kernel) == 'Linux'
