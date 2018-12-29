@@ -1,0 +1,26 @@
+{
+    "name": "vmware_puppetfact",
+    "description": "map VMware build numbers to version names, and make versions available to puppeted guests",
+    "keywords": [
+        "VMware",
+        "vSphere",
+        "ESXi",
+        "version",
+        "build numbers",
+        "puppet"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gcoxmoz/vmware_puppetfact",
+        "license": "MPL2",
+        "clone": "https://github.com/gcoxmoz/vmware_puppetfact.git"
+    },
+    "participate": {
+        "home": "https://github.com/gcoxmoz/vmware_puppetfact",
+        "docs": "https://github.com/gcoxmoz/vmware_puppetfact/blob/master/README"
+    },
+    "bugs": {
+        "list": "https://github.com/gcoxmoz/vmware_puppetfact/issues",
+        "report": "https://github.com/gcoxmoz/vmware_puppetfact/issues/new"
+    }
+}
