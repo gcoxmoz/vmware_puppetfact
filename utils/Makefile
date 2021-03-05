@@ -5,7 +5,7 @@ KBSRC  = raw_data_from_KB.txt
 JSON = ../build_numbers/esxi_build_numbers.json
 
 build_numbers: 
-	@cat $(KBSRC) | ./create_esxi_build_numbers_json.pl > $(JSON)
+	@cat $(KBSRC) | ./create_esxi_build_numbers_json.py > $(JSON)
 
 # If you want to report on 6.0u2 instead of 6.0, you can.  Add option --minor here.
 facters: build_numbers
