@@ -5,7 +5,7 @@ Ongoing maintenance:
 1) When there's an update to https://kb.vmware.com/kb/2143832, update utils/raw_data_from_KB.txt
 2) Run `utils/matchup_bios_to_string.py --dump --minor` and verify that we have covered all 'update X' releases.  (meaning, we got 6.0 and 6.0u1, but not every 'express patch' subpatch out there)
 3) run `make` to rebuild the JSON and the facter ruby file, even if it's incomplete.
-4) run `utils/missing_dmidecodes.pl < raw_data_from_KB.txt` to see who needs to be bios-analyzed that you haven't done yet:
+4) run `utils/missing_dmidecodes.py < raw_data_from_KB.txt` to see who needs to be bios-analyzed that you haven't done yet:
 5) When new releases happen, install a host, boot a Linux guest, and save off a run of `dmidecode -t bios` as dmidecode/dmidecode.NUM.txt, where NUM is the build number reported by ESX.
 6) rerun `make` now that you have more dmidecodes
 7) Commit and publish.
