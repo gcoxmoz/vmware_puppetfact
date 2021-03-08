@@ -9,7 +9,7 @@ build_numbers:
 
 # If you want to report on 6.0u2 instead of 6.0, you can.  Add option --minor here.
 facters: build_numbers
-	$(foreach file, $(wildcard templates/*) , @./matchup-bios-to-string.pl --template $(file) > ../lib/facter/$(notdir $(file))  )
+	$(foreach file, $(wildcard templates/*) , @./matchup_bios_to_string.py --template $(file) > ../lib/facter/$(notdir $(file))  )
 
 clean:
 	@if [ ! -f $(KBSRC) ]; then \
